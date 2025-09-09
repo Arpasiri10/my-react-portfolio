@@ -11,9 +11,9 @@ function App() {
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
-
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
   return (
     <div className="min-h-dvh bg-white text-black dark:bg-black dark:text-white transition-colors duration-200">
       {/* Navbar */}
@@ -56,11 +56,16 @@ function App() {
         <section id="home" className="min-h-[70dvh] flex items-center">
           <div className="grid md:grid-cols-2 gap-10">
             <div>
-              <p className={`${windowWidth < 480 ? "hidden" : "block"} text-sm text-neutral-500`}>{translate('สวัสดีค่ะ', "Hi, I'm")}</p>
+              <p className={`${windowWidth < 480 ? "hidden" : "block"} text-sm text-neutral-500`}>
+                {translate('สวัสดีค่ะ', "Hi, I'm")}
+              </p>
               <h1 className="text-4xl font-bold mt-2">{translate('นางสาวอาภาศิริ สีสม', 'Arpasiri Seesom')}</h1>
               <p className="text-neutral-600 dark:text-neutral-400">{translate('นางสาว อาภาศิริ สีสม', 'Ms. Arpasiri Seesom')}</p>
               <p className="mt-4 text-neutral-700 dark:text-neutral-300">
-                {translate('ต้องการฝึกงานในตำแหน่งที่ท้าทายและน่าสนใจ เพื่อศึกษาเรียนรู้ และเก็บเกี่ยวประสบการณ์ด้านเทคโนโลยีใหม่ ๆ รวมถึงแก้ไขปัญหาและสร้างสรรค์สิ่งใหม่ พร้อมนำทักษะการเขียนโปรแกรม มาปรับใช้ในการปฏิบัติงานให้เกิดประโยชน์สูงสุดต่อทีมและองค์กร ควบคู่ไปกับการพัฒนาตนเองให้มีความชำนาญมากยิ่งขึ้นค่ะ', 'I am looking for an internship where I can learn new technologies, solve problems, and create new ideas. I will apply my strengths in Python, HTML, and CSS to deliver value to the team and organization while continuously improving myself.')}
+                {translate(
+                  'ต้องการฝึกงานในตำแหน่งที่ท้าทายและน่าสนใจ เพื่อศึกษาเรียนรู้ และเก็บเกี่ยวประสบการณ์ด้านเทคโนโลยีใหม่ ๆ รวมถึงแก้ไขปัญหาและสร้างสรรค์สิ่งใหม่ พร้อมนำทักษะการเขียนโปรแกรม มาปรับใช้ในการปฏิบัติงานให้เกิดประโยชน์สูงสุดต่อทีมและองค์กร ควบคู่ไปกับการพัฒนาตนเองให้มีความชำนาญมากยิ่งขึ้นค่ะ',
+                  'I am looking for an internship where I can learn new technologies, solve problems, and create new ideas. I will apply my strengths in Python, HTML, and CSS to deliver value to the team and organization while continuously improving myself.'
+                )}
               </p>
               <div className="mt-6 flex gap-3">
                 <a href="#projects" className="px-4 py-2 rounded bg-purple-600 text-white text-sm">{translate('ดูโปรเจกต์', 'See Projects')}</a>
@@ -68,9 +73,9 @@ function App() {
               </div>
             </div>
             <div className="flex justify-center md:justify-end">
-            <div className="rounded-full overflow-hidden h-48 w-48 md:h-64 md:w-64 lg:h-72 lg:w-72 ring-2 ring-white dark:ring-neutral-900 shadow-lg">
-            <img src={profileImg} alt={translate('รูปโปรไฟล์', 'Profile photo')} className="h-full w-full object-cover"/>
-            </div>
+              <div className="rounded-full overflow-hidden h-48 w-48 md:h-64 md:w-64 lg:h-72 lg:w-72 ring-2 ring-white dark:ring-neutral-900 shadow-lg">
+                <img src={profileImg} alt={translate('รูปโปรไฟล์', 'Profile photo')} className="h-full w-full object-cover"/>
+              </div>
             </div>
           </div>
         </section>
@@ -91,8 +96,7 @@ function App() {
           <h2 className="text-2xl font-semibold">{translate('โปรเจกต์', 'Projects')}</h2>
           <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {PORTFOLIO_PROJECTS.filter(p => p.featured).map((p) => (
-              <a key={p.title} href={p.link} target="_blank" rel="noopener noreferrer"
-                className="p-4 border rounded hover:shadow transition">
+              <a key={p.title} href={p.link} target="_blank" rel="noopener noreferrer" className="p-4 border rounded hover:shadow transition">
                 <h3 className="font-semibold">{p.title}</h3>
                 <p className="text-sm text-neutral-600 dark:text-neutral-400 mt-2">{p.description}</p>
                 <div className="flex flex-wrap gap-2 mt-2">
@@ -130,18 +134,31 @@ function App() {
         {/* Contact */}
         <section id="contact" className="scroll-mt-10 py-16 border-t border-neutral-200 dark:border-neutral-800">
           <h2 className="text-2xl font-semibold">{translate('ติดต่อ', 'Contact')}</h2>
-          <p className="mt-4">{translate('สนใจร่วมงานหรือติดต่อได้ทางอีเมลหรือเบอร์โทรศัพท์', "If you're interested in working together, contact me via email or phone")}</p>
-          <div className="mt-6 flex gap-3 flex-wrap">
-            <a href="mailto:arpasiriseesom@gmail.com" className="px-4 py-2 rounded bg-blue-600 text-white text-sm">{translate('ส่งอีเมล', 'Email')}</a>
-            <a href="tel:0954121064" className="px-4 py-2 rounded bg-green-600 text-white text-sm">{translate('โทรติดต่อ', 'Call')}</a>
-            <a href="https://github.com/Arpasiri10" target="_blank" rel="noopener noreferrer"
-              className="px-4 py-2 rounded bg-gray-800 text-white text-sm">GitHub</a>
+          <p className="mt-4">
+            {translate('สนใจร่วมงานหรือติดต่อได้ทางอีเมลหรือเบอร์โทรศัพท์',"If you're interested in working together, contact me via email or phone")}
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3 items-center">
+            <a href="mailto:arpasiriseesom@gmail.com" className="flex items-center gap-2 px-4 py-2 rounded bg-blue-600 text-white text-sm hover:bg-blue-700 transition">
+              ✉️ {translate('ส่งอีเมล', 'Email')}
+            </a>
+            <a href="tel:0954121064" className="flex items-center gap-2 px-4 py-2 rounded bg-green-600 text-white text-sm hover:bg-green-700 transition">
+              📞 {translate('โทรติดต่อ', 'Call')}
+            </a>
+            <a href="https://github.com/Arpasiri10" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 rounded bg-gray-800 text-white text-sm hover:bg-gray-900 transition">
+              🐱 GitHub
+            </a>
+            <div className="px-4 py-2 text-sm text-neutral-700 dark:text-neutral-300">
+              Email: <a href="mailto:arpasiriseesom@gmail.com" className="underline hover:text-blue-600">arpasiriseesom@gmail.com</a><br/>
+              Tel: <a href="tel:0954121064" className="underline hover:text-green-600">095-412-1064</a>
+            </div>
           </div>
         </section>
       </main>
 
+      {/* Footer */}
       <footer className="py-10 border-t border-neutral-200 dark:border-neutral-800 text-center text-sm text-neutral-500">
-        © {new Date().getFullYear()} นางสาวอาภาศิริ สีสม (Ms. Arpasiri Seesom). All rights reserved.
+        © {new Date().getFullYear()} นางสาวอาภาศิริ สีสม (Ms. Arpasiri Seesom). All rights reserved.<br/>
+        Email: <a href="mailto:arpasiriseesom@gmail.com" className="underline hover:text-blue-600">arpasiriseesom@gmail.com</a> | Tel: <a href="tel:0954121064" className="underline hover:text-green-600">095-412-1064</a>
       </footer>
     </div>
   );
