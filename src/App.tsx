@@ -96,7 +96,7 @@ function App() {
               </div>
             </div>
 
-            {/* รูปโปรไฟล์ */}
+            {/* Profile */}
             <div className="flex justify-center md:justify-end">
               <div className="rounded-full overflow-hidden h-48 w-48 md:h-64 md:w-64 lg:h-72 lg:w-72 ring-2 ring-white dark:ring-neutral-900 shadow-lg">
                 <img src={profileImg} alt={translate('รูปโปรไฟล์', 'Profile photo')} className="h-full w-full object-cover"/>
@@ -136,18 +136,25 @@ function App() {
 
         {/* Skills */}
         <section id="skills" className="scroll-mt-10 py-16">
+        {/* Technical Skills */}
+        <div className="mb-12">
           <h2 className="text-2xl font-semibold">{translate('ทักษะ', 'Skills')}</h2>
           <div className="flex flex-wrap gap-2 mt-6">
-            {PORTFOLIO_SKILLS.map((s) => (
-              <span key={s} className="text-sm border px-3 py-1 rounded">{s}</span>
-            ))}
-          </div>
+          {PORTFOLIO_SKILLS.map((s) => (
+            <span key={s} className="text-sm border px-3 py-1 rounded">{s}</span>
+          ))}
+        </div>
+        </div>
+
+        {/* Soft Skills */}
           <div className="flex flex-wrap gap-2 mt-6">
-            {PORTFOLIO_SOFTSKILLS.map((s) => (
-              <span key={s} className="text-sm border px-3 py-1 rounded">{s}</span>
-            ))}
-          </div>
-        </section>
+          {PORTFOLIO_SOFTSKILLS.map((s) => (
+            <span key={s.en} className="text-sm border px-3 py-1 rounded">
+              {language === 'TH' ? s.th : s.en}
+            </span>
+          ))}
+        </div>
+      </section>
 
         {/* Certificates */}
         <section id="certificates" className="scroll-mt-10 py-16 border-t border-neutral-200 dark:border-neutral-800">
@@ -184,7 +191,6 @@ function App() {
 
       {/* Footer */}
       <footer className="py-10 border-t border-neutral-200 dark:border-neutral-800 text-center text-sm text-neutral-500">
-        © {new Date().getFullYear()} นางสาวอาภาศิริ สีสม (Ms. Arpasiri Seesom). All rights reserved.<br/>
         Email: <a href="mailto:arpasiriseesom@gmail.com" className="underline hover:text-blue-600">arpasiriseesom@gmail.com</a> | Tel: <a href="tel:0954121064" className="underline hover:text-green-600">095-412-1064</a>
       </footer>
     </div>
