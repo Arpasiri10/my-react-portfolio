@@ -44,6 +44,16 @@ export const PORTFOLIO_PROJECTS = [
   ];
   // Technical Skills
   export const PORTFOLIO_SKILLS = [
+    "Python",
+    "CSS",
+    "C",
+    "C#",
+    "Java",
+    "Flutter",
+    "Vue.js",
+    "Docker",
+    "MySQL",
+    "PostgreSQL",
     "HTML (Beginner)",
     "SQL (Beginner)",
     "React (Beginner)",
